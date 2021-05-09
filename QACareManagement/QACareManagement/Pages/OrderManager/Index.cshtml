@@ -1,0 +1,132 @@
+﻿@page
+@model QACareManagement.Pages.OrderManager.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].StartDateRunning)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].EndRunRunning)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].TotalPointRelease)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].TotalPointEachRegister)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].NumOfTotalRegisterAllow)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].NumOfPointEachScan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].NumOfAllowScanDaily)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].StarTimeAllowScanDaily)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].EndTimeAllowScanDaily)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].CreateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].UpdateAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].DealerCustomer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionGift[0].RegisterLocationCustomerAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PromotionGift) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDateRunning)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndRunRunning)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPointRelease)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPointEachRegister)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfTotalRegisterAllow)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfPointEachScan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfAllowScanDaily)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StarTimeAllowScanDaily)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTimeAllowScanDaily)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DealerCustomer.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterLocationCustomerAddress.Id)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,91 @@
+﻿-----
+Tạo .NET 5 Web Application Project 
+
+Nếu dùng .NetCore 3 sẽ bị lỗi giữa các version 3 và 5 liên tục rất khó sửa
+
+
+
+-----
+Sau khi tạo project mới, dùng Manage NuGet PackageManage trong Tool ,
+search và add các tên package tương ứng 
+Nếu đúng addd đúng tên các package này vào nếu đúng sẽ có 1 phần cofig như sau: 
+
+...
+<ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.0" />
+  </ItemGroup>
+...
+
+
+
+-----
+Thêm connection string vào appsettings.json:
+
+  "ConnectionStrings": { "QACareDBConnectionString": "Server=103.130.213.157;Database=QACare;User=sa;Password=Q@CareDB!" }
+
+
+
+-----
+Code gen tạo các model và dbcontext dùng EntityFramework (EF)
+https://www.learnentityframeworkcore.com/walkthroughs/existing-database
+https://www.youtube.com/watch?v=4r1bTjDQMLs&ab_channel=EngineerSolutions
+Ngoài ra trong project hiện tại là dùng MySQL nên sẽ điều chỉnh lại về config
+Vào Tools -> Nu GetPackage Manager -> Package Manager Console:
+
+Scaffold-DbContext -Connection name=QACareDBConnectionString -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir DataModel -Context "QACareContext" -DataAnnotations -Force	
+
+
+
+-----
+Giải thích : 
+
+Scaffold-DbContext			: là lệnh tạo dbcontext dùng EF
+-Connection 	name=<ConnStr>	: tên của connection string trong appsetting .json
+-Provider Pomelo....MySql	: xài library hỗ trợ EF của MSSQL 
+-OutputDir  DataModel		: Output vào folder DataModel chứa các class, code model và db
+-Context "QACareContext"		: Đặt tên class chính để thao tác trên database
+
+
+
+----- 
+Chạy lại lệnh  
+
+Scaffold-DbContext.... 
+
+Nếu có xuất hiện đoạn text ở dưới là thành công
+
+Build started...
+Build succeeded.
+Using ServerVersion '5.5.68-mariadb'.
+
+
+
+-----
+Có thể thêm lệnh sau đây bổ sung co scafold
+-DataAnnotations		: dùng anotaion
+-Force				: Ghi đè lại nếu database có thay đổi
+
+
+
+-----
+Config lại 
+
+ở file Startup.cs
+
+
+ string mySqlConnectionStr = Configuration.GetConnectionString("QACareDBConnectionString");
+
+services.AddRazorPages(); 
+services.AddDbContext<DataModel.QACareContext>();
+
+

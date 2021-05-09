@@ -1,0 +1,58 @@
+﻿@page
+@model QACareManagement.Pages.PromotionManager.ProductList.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<p>
+    Chương trình tích điểm : @Model.PromotionGiftProduct.PromotionGift.Title <br />
+    Sản phẩm : @Model.PromotionGiftProduct.Product.Name <br />
+
+</p>
+<h4>Xóa dữ Sản Phẩm đã chọn?</h4>
+
+<div>
+    <a asp-page="../Edit" asp-route-Id="@Model.PromotionGiftProduct.PromotionGiftId">Quay về</a>
+</div>
+<hr />
+
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGiftProduct.Quantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGiftProduct.Quantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGiftProduct.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGiftProduct.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGiftProduct.Product)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGiftProduct.Product.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGiftProduct.PromotionGift)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGiftProduct.PromotionGift.Title)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="PromotionGiftProduct.ProductId" />
+        <input type="hidden" asp-for="PromotionGiftProduct.PromotionGiftId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |     <a asp-page="../Edit" asp-route-Id="@Model.PromotionGiftProduct.PromotionGiftId">Quay về</a>
+
+
+    </form>
+</div>
+<div>
+</div>

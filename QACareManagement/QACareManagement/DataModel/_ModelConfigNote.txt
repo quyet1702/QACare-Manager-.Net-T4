@@ -1,0 +1,16 @@
+﻿
+-----
+Dùng metadata để bổ sung thêm option mà ko ảnh hưởng tới code generate
+
+[ModelMetadataType(typeof(CustomerMetaData))]  // anotation chỉ định class mô ta cho vào class gốc
+public partial class Customer { } // class gốc
+public partial class CustomerMetaData  { } // class mô tả thêm
+
+
+-----
+Anotation ở dưới là yêu cầu Database tự tính
+[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+
+Ở đây là ko tạo datetime từ c# mà dùng hàm trong sqlserver.
+Tất nhiên là lúc thiết kế database phải gán default value hoặc dùng function để tạo default value
+vd: như hàm (getdate()) trong mssqlserver sẽ tạo datetime ở giờ hệ thống

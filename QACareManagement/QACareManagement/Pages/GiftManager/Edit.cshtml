@@ -1,0 +1,103 @@
+﻿@page
+@model QACareManagement.Pages.GiftManager.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PromotionGift</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PromotionGift.Id" />
+            <div class="form-group">
+                <label asp-for="PromotionGift.Title" class="control-label"></label>
+                <input asp-for="PromotionGift.Title" class="form-control" />
+                <span asp-validation-for="PromotionGift.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.Description" class="control-label"></label>
+                <input asp-for="PromotionGift.Description" class="form-control" />
+                <span asp-validation-for="PromotionGift.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.StartDateRunning" class="control-label"></label>
+                <input asp-for="PromotionGift.StartDateRunning" class="form-control" />
+                <span asp-validation-for="PromotionGift.StartDateRunning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.EndRunRunning" class="control-label"></label>
+                <input asp-for="PromotionGift.EndRunRunning" class="form-control" />
+                <span asp-validation-for="PromotionGift.EndRunRunning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.TotalPointRelease" class="control-label"></label>
+                <input asp-for="PromotionGift.TotalPointRelease" class="form-control" />
+                <span asp-validation-for="PromotionGift.TotalPointRelease" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.TotalPointEachRegister" class="control-label"></label>
+                <input asp-for="PromotionGift.TotalPointEachRegister" class="form-control" />
+                <span asp-validation-for="PromotionGift.TotalPointEachRegister" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfTotalRegisterAllow" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfTotalRegisterAllow" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfTotalRegisterAllow" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfPointEachScan" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfPointEachScan" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfPointEachScan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfAllowScanDaily" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfAllowScanDaily" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfAllowScanDaily" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.StarTimeAllowScanDaily" class="control-label"></label>
+                <input asp-for="PromotionGift.StarTimeAllowScanDaily" class="form-control" />
+                <span asp-validation-for="PromotionGift.StarTimeAllowScanDaily" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.EndTimeAllowScanDaily" class="control-label"></label>
+                <input asp-for="PromotionGift.EndTimeAllowScanDaily" class="form-control" />
+                <span asp-validation-for="PromotionGift.EndTimeAllowScanDaily" class="text-danger"></span>
+            </div>
+           
+         
+           
+            <div class="form-group">
+                <label asp-for="PromotionGift.Type" class="control-label"></label>
+                <input asp-for="PromotionGift.Type" class="form-control" />
+                <span asp-validation-for="PromotionGift.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.DealerCustomerId" class="control-label"></label>
+                <select asp-for="PromotionGift.DealerCustomerId" class="form-control" asp-items="ViewBag.DealerCustomerId"></select>
+                <span asp-validation-for="PromotionGift.DealerCustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.RegisterLocationCustomerAddressId" class="control-label"></label>
+                <select asp-for="PromotionGift.RegisterLocationCustomerAddressId" class="form-control" asp-items="ViewBag.RegisterLocationCustomerAddressId"></select>
+                <span asp-validation-for="PromotionGift.RegisterLocationCustomerAddressId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

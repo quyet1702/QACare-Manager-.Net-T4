@@ -1,0 +1,40 @@
+﻿@page
+@model QACareManagement.Pages.PromotionManager.ImageUpload.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<p>
+    Chương trình tích điểm : @Model.SelectedPromotionGift.Title<br />
+</p>
+<h4> Upload hình ảnh</h4>
+<div>
+    <a asp-page="../Edit" asp-route-Id="@Model.SelectedPromotionGift.Id">Quay về</a>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="PromotionGiftImageUpload.PromotionGiftId" value="@Model.SelectedPromotionGift.Id" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PromotionGiftImageUpload.ImageFile" class="control-label"></label>
+                <input asp-for="PromotionGiftImageUpload.ImageFile"  accept="image/*" class="form-control-file border rounded p-2" />
+                <span asp-validation-for="PromotionGiftImageUpload.FileLocation" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Upload Hình" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="../Edit" asp-route-Id="@Model.SelectedPromotionGift.Id">Quay về</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

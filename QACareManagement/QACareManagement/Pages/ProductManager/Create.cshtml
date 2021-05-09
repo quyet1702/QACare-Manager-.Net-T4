@@ -1,0 +1,36 @@
+﻿@page
+@model QACareManagement.Pages.ProductManager.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>Tạo mới Sản Phẩm</h4>
+<div>
+    <a asp-page="Index">Quay về Quản lý</a>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Tạo Mới" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="Index">Quay về Quản lý</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,87 @@
+﻿@page
+@model QACareManagement.Pages.OrderManager.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>PromotionGift</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.Title" class="control-label"></label>
+                <input asp-for="PromotionGift.Title" class="form-control" />
+                <span asp-validation-for="PromotionGift.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.Description" class="control-label"></label>
+                <input asp-for="PromotionGift.Description" class="form-control" />
+                <span asp-validation-for="PromotionGift.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.TotalPointRelease" class="control-label"></label>
+                <input asp-for="PromotionGift.TotalPointRelease" class="form-control" />
+                <span asp-validation-for="PromotionGift.TotalPointRelease" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.TotalPointEachRegister" class="control-label"></label>
+                <input asp-for="PromotionGift.TotalPointEachRegister" class="form-control" />
+                <span asp-validation-for="PromotionGift.TotalPointEachRegister" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfTotalRegisterAllow" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfTotalRegisterAllow" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfTotalRegisterAllow" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfPointEachScan" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfPointEachScan" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfPointEachScan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfAllowScanDaily" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfAllowScanDaily" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfAllowScanDaily" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.StarTimeAllowScanDaily" class="control-label"></label>
+                <input asp-for="PromotionGift.StarTimeAllowScanDaily" class="form-control" />
+                <span asp-validation-for="PromotionGift.StarTimeAllowScanDaily" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.EndTimeAllowScanDaily" class="control-label"></label>
+                <input asp-for="PromotionGift.EndTimeAllowScanDaily" class="form-control" />
+                <span asp-validation-for="PromotionGift.EndTimeAllowScanDaily" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.CreateTime" class="control-label"></label>
+                <input asp-for="PromotionGift.CreateTime" class="form-control" />
+                <span asp-validation-for="PromotionGift.CreateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.DealerCustomerId" class="control-label"></label>
+                <select asp-for="PromotionGift.DealerCustomerId" class ="form-control" asp-items="ViewBag.DealerCustomerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.RegisterLocationCustomerAddressId" class="control-label"></label>
+                <select asp-for="PromotionGift.RegisterLocationCustomerAddressId" class ="form-control" asp-items="ViewBag.RegisterLocationCustomerAddressId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

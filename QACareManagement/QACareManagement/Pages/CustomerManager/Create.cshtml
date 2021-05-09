@@ -1,0 +1,66 @@
+﻿@page
+@model QACareManagement.Pages.CustomerManager.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<h4> Tạo Mới Khách Hàng</h4>
+<a asp-page="Index">Quay về</a>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="form-group">
+                <label asp-for="Customer.FullName" class="control-label"></label>
+                <input asp-for="Customer.FullName" class="form-control" />
+                <span asp-validation-for="Customer.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.PhoneNumber" class="control-label"></label>
+                <input asp-for="Customer.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.PasswordHash" class="control-label"></label>
+                <input asp-for="Customer.PasswordHash" class="form-control" />
+                <span asp-validation-for="Customer.PasswordHash" class="text-danger"></span>
+            </div>
+            <div class="form-group p-1">
+                <div class="form-check-inline form-check">
+                    <input id="khach-hang" asp-for="Customer.Role" class="form-check-input" type="radio" value="1" checked />
+                    <label for="khach-hang" class="form-check-label">Khách Hàng </label>
+
+                </div>
+                <div class="form-check form-check-inline">
+                    <input id="doi-tac" asp-for="Customer.Role" class="form-check-input" type="radio" value="2" />
+                    <label for="doi-tac" class="form-check-label">Đối Tác </label>
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Tạo Mới" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Quay về</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

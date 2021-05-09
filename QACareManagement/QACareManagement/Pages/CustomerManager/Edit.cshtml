@@ -1,0 +1,125 @@
+﻿@page
+@model QACareManagement.Pages.CustomerManager.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<p class="text-muted">  Thông tin khách hàng</p>
+
+<h4> @Html.DisplayFor(model => model.Customer.FullName)</h4>
+<a asp-page="./Index">Quay về</a>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Customer.Id" />
+            <div class="form-group">
+                <label asp-for="Customer.FullName" class="control-label"></label>
+                <input asp-for="Customer.FullName" class="form-control" />
+                <span asp-validation-for="Customer.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.PhoneNumber" class="control-label"></label>
+                <input asp-for="Customer.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.PasswordHash" class="control-label"></label>
+                <input asp-for="Customer.PasswordHash" class="form-control" />
+                <span asp-validation-for="Customer.PasswordHash" class="text-danger"></span>
+            </div>
+            <div class="form-group p-1">
+                <div class="form-check-inline form-check">
+                    <input id="khach-hang" asp-for="Customer.Role" class="form-check-input" type="radio" value="1" checked />
+                    <label for="khach-hang" class="form-check-label">Khách Hàng </label>
+
+                </div>
+                <div class="form-check form-check-inline">
+                    <input id="doi-tac" asp-for="Customer.Role" class="form-check-input" type="radio" value="2" />
+                    <label for="doi-tac" class="form-check-label">Đối Tác </label>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Cập Nhật" class="btn btn-primary" />
+
+            </div>
+        </form>
+    </div>
+
+    @*Trình bày địa chỉ kh ở đây *@
+    <div class="col-md-6">
+        <p>
+            <b> Địa chỉ giao nhận </b>  <a class="float-right" asp-page="./Address/Create" asp-route-customerID="@Model.Customer.Id">Tạo Thêm</a>
+        </p>
+        <div class="table-responsive">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CustomerAddress[0].StreetAddress)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CustomerAddress[0].Ward)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CustomerAddress[0].Province)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CustomerAddress[0].City)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CustomerAddress)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StreetAddress)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ward)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Province)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.City)
+                            </td>
+
+
+                            <td>
+                                <a asp-page="./Address/Edit" asp-route-id="@item.Id">Chi Tiết </a>
+                            </td>
+                        </tr>
+                    }
+
+                    @if (Model.CustomerAddress.Count == 0)
+                    {
+
+                        <tr>
+                            <td> <small class="text-muted">  Chưa có dữ liệu </small> </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="">
+    <a asp-page="./Index">Quay về </a>
+    <a asp-page="./Delete" asp-route-id="@Model.Customer.Id" class="float-right text-danger"> Xóa Bỏ  </a>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,95 @@
+﻿@page
+@model QACareManagement.Pages.PromotionManager.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>Tạo mới chương trình Tích Điểm</h4>
+<div>
+    <a asp-page="Index">Quay về Quản Lý</a>
+</div>
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.Title" class="control-label"></label>
+                <input asp-for="PromotionGift.Title" class="form-control" />
+                <span asp-validation-for="PromotionGift.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.Description" class="control-label"></label>
+                <textarea asp-for="PromotionGift.Description" class="form-control" rows="5"></textarea>
+
+                <span asp-validation-for="PromotionGift.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.TotalPointRelease" class="control-label"></label>
+                <input asp-for="PromotionGift.TotalPointRelease" class="form-control" />
+                <span asp-validation-for="PromotionGift.TotalPointRelease" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfTotalRegisterAllow" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfTotalRegisterAllow" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfTotalRegisterAllow" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.TotalPointEachRegister" class="control-label"></label>
+                <input asp-for="PromotionGift.TotalPointEachRegister" class="form-control" />
+                <span asp-validation-for="PromotionGift.TotalPointEachRegister" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfAllowScanDaily" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfAllowScanDaily" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfAllowScanDaily" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfPointEachScan" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfPointEachScan" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfPointEachScan" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PromotionGift.EndRunRunning" class="control-label"></label>
+                <input asp-for="PromotionGift.EndRunRunning" class="form-control" type="date" />
+                <span asp-validation-for="PromotionGift.EndRunRunning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Thời gian cho phép quét hàng ngày </label>
+                <div class="row">
+
+
+                    <div class="col-6">
+                        <input asp-for="PromotionGift.StarTimeAllowScanDaily" class="form-control" type="time" />
+                        <i class="small text-muted"> Bắt đầu</i>
+                    </div>
+                    <div class="col-6">
+                        <input asp-for="PromotionGift.EndTimeAllowScanDaily" class="form-control" type="time" />
+                        <i class="small text-muted"> Kết Thúc</i>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Lưu Lại" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Quay về Quản Lý</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

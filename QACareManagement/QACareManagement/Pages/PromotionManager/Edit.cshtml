@@ -1,0 +1,291 @@
+﻿@page
+@model QACareManagement.Pages.PromotionManager.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<p class="text-muted">  Thông tin chương trình</p>
+
+<h4> @Html.DisplayFor(model => model.PromotionGift.Title)</h4>
+<div>
+    <a asp-page="./Index">Quay về</a>
+</div>
+
+<hr />
+<div class="row">
+
+    <!-- form master -->
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PromotionGift.Id" />
+            <div class="form-group">
+                <label asp-for="PromotionGift.Title" class="control-label"></label>
+                <input asp-for="PromotionGift.Title" class="form-control" />
+                <span asp-validation-for="PromotionGift.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.Description" class="control-label"></label>
+                <textarea asp-for="PromotionGift.Description" class="form-control" rows="5"></textarea>
+
+                <span asp-validation-for="PromotionGift.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.TotalPointRelease" class="control-label"></label>
+                <input asp-for="PromotionGift.TotalPointRelease" class="form-control" />
+                <span asp-validation-for="PromotionGift.TotalPointRelease" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfTotalRegisterAllow" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfTotalRegisterAllow" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfTotalRegisterAllow" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.TotalPointEachRegister" class="control-label"></label>
+                <input asp-for="PromotionGift.TotalPointEachRegister" class="form-control" />
+                <span asp-validation-for="PromotionGift.TotalPointEachRegister" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfAllowScanDaily" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfAllowScanDaily" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfAllowScanDaily" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.NumOfPointEachScan" class="control-label"></label>
+                <input asp-for="PromotionGift.NumOfPointEachScan" class="form-control" />
+                <span asp-validation-for="PromotionGift.NumOfPointEachScan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PromotionGift.EndRunRunning" class="control-label"></label>
+                <input asp-for="PromotionGift.EndRunRunning" class="form-control" type="date" />
+                <span asp-validation-for="PromotionGift.EndRunRunning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Thời gian cho phép quét hàng ngày </label>
+                <div class="row">
+
+
+                    <div class="col-6">
+                        <input asp-for="PromotionGift.StarTimeAllowScanDaily" class="form-control" type="time" />
+                        <i class="small text-muted"> Bắt đầu</i>
+                    </div>
+                    <div class="col-6">
+                        <input asp-for="PromotionGift.EndTimeAllowScanDaily" class="form-control" type="time" />
+                        <i class="small text-muted"> Kết Thúc</i>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cập Nhật" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <!-- detail   -->
+    <div class="col-md-6">
+        <!--  Hình ảnh của chuong trình -->
+        <div id="">
+            <p>
+                <b> Hình ảnh </b>  <a class="float-right" asp-page="./ImageUpload/Create" asp-route-promotionGiftId="@Model.PromotionGift.Id">Thêm Hình</a>
+            </p>
+            <div class="table-responsive">
+                <table class="table">
+                   
+                    <tbody>
+                       
+                        @foreach (var item in Model.PromotionGiftImageUpload)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="@item.FileLocation" style="height: 30px"/>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FileName)
+                                </td>
+                                
+
+                                <td>
+                                    <a asp-page="./ProductList/Edit" asp-route-id="@item.Id">Xóa Bỏ </a>
+                                </td>
+                            </tr>
+                        }
+
+                        @if (Model.PromotionGiftImageUpload.Count == 0)
+                        {
+
+                            <tr>
+                                <td> <small class="text-muted">  Chưa có hình ảnh </small> </td>
+                            </tr>
+                        }
+                       
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="">
+
+            </div>
+        </div>
+        <hr />
+
+
+        <!-- Sản phầm kèm theo-->
+        <div id="">
+            <p>
+                <b> Sản phẩm kèm theo </b>  <a class="float-right" asp-page="./ProductList/Index" asp-route-promotionGiftId="@Model.PromotionGift.Id">Chọn Thêm</a>
+            </p>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PromotionGiftProduct[0].Product.Name)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.PromotionGiftProduct[0].Quantity)
+
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PromotionGiftProduct[0].Price)
+
+                            </th>
+                            <th>
+                                Tổng
+
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int total = 0;
+                        }
+                        @foreach (var item in Model.PromotionGiftProduct)
+                        {
+                            int currentTotal = item.Price * item.Quantity;
+                            total += currentTotal;
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    @(currentTotal)
+                                </td>
+
+
+                                <td>
+                                    <a asp-page="./ProductList/Edit" asp-route-id="@item.Id">Thay Đổi </a>
+                                </td>
+                            </tr>
+                        }
+
+                        @if (Model.PromotionGiftProduct.Count == 0)
+                        {
+
+                            <tr>
+                                <td> <small class="text-muted">  Chưa có dữ liệu </small> </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3" class="text-right"> Tổng cộng </td>
+                                <td class="font-weight-bold"> @total</td>
+                                <td></td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="">
+
+            </div>
+        </div>
+        <hr />
+
+        <!-- Địa chỉ đăng ký-->
+        <div id="">
+            <p>
+                <b> Đối tác và địa chỉ vận hành chương trình  </b>  <a class="float-right" asp-page="./FindDealer/Index" asp-route-promotionGiftId="@Model.PromotionGift.Id"> Thay Đổi </a>
+            </p>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Họ tên
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PromotionGift.RegisterLocationCustomerAddress.Customer.FullName)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Địa chỉ đăng ký vận hành
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PromotionGift.RegisterLocationCustomerAddress.StreetAddress)
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PromotionGift.RegisterLocationCustomerAddress.Ward)
+
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PromotionGift.RegisterLocationCustomerAddress.Ward)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PromotionGift.RegisterLocationCustomerAddress.Province)
+
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PromotionGift.RegisterLocationCustomerAddress.Province)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PromotionGift.RegisterLocationCustomerAddress.City)
+
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PromotionGift.RegisterLocationCustomerAddress.City)
+
+                        </td>
+                    </tr>
+                </table>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div>
+    <a asp-page="./Index">Quay về</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

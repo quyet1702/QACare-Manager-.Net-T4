@@ -1,0 +1,9 @@
+﻿
+Các table điều phải bỏ trong div class reponsive
+
+H4 là tiêu đề/ title mặc định
+
+Layout cho form luôn là 6/6 
+ - 1 cột cho Form Master
+ - 1 cột cho các Select/List/Table Detail
+

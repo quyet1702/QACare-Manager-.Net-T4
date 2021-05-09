@@ -1,0 +1,65 @@
+﻿@page
+@model QACareManagement.Pages.CustomerManager.Address.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<p>  Khách hàng : @Model.SelectedCustomer.FullName</p>
+
+<h4> Tạo thêm Địa Chỉ</h4>
+
+<div>
+    <a asp-page="Index">Quay về </a>
+</div>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <input type="hidden" asp-for="CustomerAddress.CustomerId" value="@Model.SelectedCustomer.Id" class="form-control" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerAddress.StreetAddress" class="control-label"></label>
+                <input asp-for="CustomerAddress.StreetAddress" class="form-control" />
+                <span asp-validation-for="CustomerAddress.StreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerAddress.Ward" class="control-label"></label>
+                <input asp-for="CustomerAddress.Ward" class="form-control" />
+                <span asp-validation-for="CustomerAddress.Ward" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerAddress.Province" class="control-label"></label>
+                <input asp-for="CustomerAddress.Province" class="form-control" />
+                <span asp-validation-for="CustomerAddress.Province" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerAddress.City" class="control-label"></label>
+                <input asp-for="CustomerAddress.City" class="form-control" />
+                <span asp-validation-for="CustomerAddress.City" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="CustomerAddress.CustomerId" class="control-label"></label>
+                <select asp-for="CustomerAddress.CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerAddress.LatLong" class="control-label"></label>
+                <input asp-for="CustomerAddress.LatLong" class="form-control" />
+                <span asp-validation-for="CustomerAddress.LatLong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Tạo Mới" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Quay về</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

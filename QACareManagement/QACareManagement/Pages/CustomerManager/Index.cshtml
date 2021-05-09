@@ -1,0 +1,60 @@
+﻿@page
+@model QACareManagement.Pages.CustomerManager.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Quản lý khách hàng</h4>
+
+<p>
+    <a asp-page="Create">Tạo Mới </a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customer[0].FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customer[0].PhoneNumber)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Customer[0].Role)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customer[0].CreateDate)
+                </th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Customer)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @ModelDataTypeName.GetCustomerRoleName(item.Role)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateDate)
+
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id"> Chi tiết  </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

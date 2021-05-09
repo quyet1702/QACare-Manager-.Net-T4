@@ -1,0 +1,90 @@
+﻿@page
+@model QACareManagement.Pages.PromotionManager.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h4>Quản lý chương trình Tích Điểm</h4>
+
+<p>
+    <a asp-page="Create">Tạo Mới </a>
+</p>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PromotionGift[0].Title)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.PromotionGift[0].EndRunRunning)
+                </th>
+                <th>
+
+                    Tổng Điểm  <br /> Phát Hành
+
+                </th>
+
+                <th>
+
+
+                    Số lượng  <br /> Phát Hành
+
+
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.PromotionGift[0].DealerCustomer)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PromotionGift)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title) <br />
+                        <span class="small font-italic"> 
+                            @Html.DisplayFor(modelItem => item.RegisterLocationCustomerAddress.StreetAddress),
+                            @Html.DisplayFor(modelItem => item.RegisterLocationCustomerAddress.City)
+                        </span>
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndRunRunning)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPointRelease)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumOfTotalRegisterAllow)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegisterLocationCustomerAddress.Customer.FullName)
+                    </td>
+
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Chi Tiết</a>
+
+                    </td>
+                </tr>
+            }
+
+            @if (Model.PromotionGift.Count == 0)
+            {
+                <tr>
+                    <td> <small class="text-muted">  Chưa có dữ liệu </small> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

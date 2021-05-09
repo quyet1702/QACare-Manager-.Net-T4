@@ -1,0 +1,124 @@
+﻿@page
+@model QACareManagement.Pages.OrderManager.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PromotionGift</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.StartDateRunning)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.StartDateRunning)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.EndRunRunning)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.EndRunRunning)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.TotalPointRelease)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.TotalPointRelease)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.TotalPointEachRegister)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.TotalPointEachRegister)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.NumOfTotalRegisterAllow)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.NumOfTotalRegisterAllow)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.NumOfPointEachScan)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.NumOfPointEachScan)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.NumOfAllowScanDaily)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.NumOfAllowScanDaily)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.StarTimeAllowScanDaily)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.StarTimeAllowScanDaily)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.EndTimeAllowScanDaily)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.EndTimeAllowScanDaily)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.CreateDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.CreateDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.CreateTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.CreateTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.UpdateAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.UpdateAt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.DealerCustomer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.DealerCustomer.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PromotionGift.RegisterLocationCustomerAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PromotionGift.RegisterLocationCustomerAddress.Id)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="PromotionGift.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

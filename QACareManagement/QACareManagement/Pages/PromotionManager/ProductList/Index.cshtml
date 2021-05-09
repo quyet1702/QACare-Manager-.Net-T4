@@ -1,0 +1,48 @@
+﻿@page
+@model QACareManagement.Pages.PromotionManager.ProductList.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>  Chương trình tích điểm @Model.SelectedPromotionGift.Title  </p>
+
+<h4> Thêm Sản Phẩm đi kèm</h4>
+
+<p>
+    <a asp-page="../Edit" asp-route-Id="@Model.SelectedPromotionGift.Id">Quay về</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Name)
+            </th>
+           
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Product)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+         
+
+            <td>
+                <a asp-page="./Create" asp-route-promotionGiftId="@Model.SelectedPromotionGift.Id" asp-route-productId="@item.Id">Chọn</a>
+
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-page="../Edit" asp-route-Id="@Model.SelectedPromotionGift.Id">Quay về</a>
+</div>

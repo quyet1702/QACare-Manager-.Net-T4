@@ -1,0 +1,31 @@
+﻿@page
+@model QACareManagement.Pages.TagManager.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Tag</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tag.Text)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tag.Text)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tag.Slug)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tag.Slug)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Tag.Id">Edit</a> |
+    <a asp-page="./Index">Quay về Quản lý</a>
+</div>

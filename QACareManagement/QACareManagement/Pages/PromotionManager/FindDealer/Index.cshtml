@@ -1,0 +1,71 @@
+﻿@page
+@model QACareManagement.Pages.PromotionManager.FindDealer.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>  Chương trình tích điểm @Model.SelectedPromotionGift.Title  </p>
+
+<h4> Tìm đối tác</h4>
+
+<p>
+    <a asp-page="../Edit" asp-route-Id="@Model.SelectedPromotionGift.Id">Quay về</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress[0].Customer.FullName)
+            </th>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress[0].StreetAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress[0].Ward)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress[0].Province)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress[0].City)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CustomerAddress)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StreetAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ward)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Province)
+                </td>
+               
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="PromotionGiftId" value="@Model.SelectedPromotionGift.Id" />
+                        <input type="hidden"  name="CustomerAddressID" value="@item.Id" />
+                        <input type="submit" value="Chọn" class="btn btn-link p-0" />
+
+                    </form>
+                   
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-page="../Edit" asp-route-Id="@Model.SelectedPromotionGift.Id">Quay về</a>
+</p>

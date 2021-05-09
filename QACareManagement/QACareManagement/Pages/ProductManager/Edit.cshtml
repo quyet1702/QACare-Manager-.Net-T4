@@ -1,0 +1,44 @@
+﻿@page
+@model QACareManagement.Pages.ProductManager.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<p class="text-muted">  Thông tin sản phẩm</p>
+
+<h4> @Html.DisplayFor(model => model.Product.Name)</h4>
+<div>
+    <a asp-page="./Index">Quay về Quản lý</a>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Product.Id" />
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cập Nhật" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-8">
+
+    </div>
+</div>
+
+<hr />
+<div>
+    <a asp-page="./Index">Quay về Quản lý</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
